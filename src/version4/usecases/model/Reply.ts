@@ -1,4 +1,5 @@
-import Ticket from '../Entity/Ticket';
+import Ticket from "../../Domain/Ticket";
+
 export class Reply {
   private constructor(
     readonly id: string,
