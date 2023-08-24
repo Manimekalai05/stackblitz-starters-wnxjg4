@@ -5,6 +5,8 @@ export class Reply {
     readonly id: string,
     readonly subject: string,
     readonly description: string,
+    readonly content: string,
+    readonly channel: string,
     readonly errormessage: string
   ) {}
 
