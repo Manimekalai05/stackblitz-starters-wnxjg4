@@ -8,8 +8,8 @@ export class SaveForumDraftUseCase {
     private readonly notifyService: NotificationBoundary
   ) {}
 
-  async execute(replyInput: Reply): Promise<void> {
-    this.draftRepo
+  async execute(replyInput: Reply): Promise<Reply> {
+    return this.draftRepo
       .saveDraft(replyInput)
       .catch((err) => this.notifyService.notifyError(Reply.fromError(err)));
   }

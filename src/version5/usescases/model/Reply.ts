@@ -17,5 +17,9 @@ export class Reply {
   static fromError(errormessage: string) {
     return new Reply(null, null, null, errormessage);
   }
+
+  static fromProperties({id,content}){
+    return new Reply(id,null,null,content,null,null)
+  }
   }
 }
