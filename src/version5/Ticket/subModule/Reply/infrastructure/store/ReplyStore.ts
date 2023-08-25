@@ -1,14 +1,10 @@
 class ReplyStore {
-  subscribeToBlock(callback) {
+  subscribeToStore(callback) {
     store.subscribe(() => {
-      console.log('BlockSt', store.getState().blocks);
       //      callback(store.getState().blocks);
     });
   }
 
-  getBlocks() {
-    return store.getState().blocks;
-  }
 
   saveDraft(api,id,data) {
     store.dispatch(
