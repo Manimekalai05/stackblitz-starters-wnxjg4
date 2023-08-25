@@ -24,7 +24,7 @@ export default class User {
     };
   }
 
-  isModerator() : boolean{
+  isModerator(): boolean {
     return (
       !this.isAdminUser &&
       this.channelRelatedInfo.moderators &&
@@ -32,16 +32,27 @@ export default class User {
     );
   }
   isAdminUser() {}
-  checkIsModerator(){
+  checkIsModerator() {
     let list;
-    if(this.moderator.length  == 0){
-      return false
-    }
-    else{
-      list  = this.moderator.filter((data)=>{
+    if (this.moderator.length == 0) {
+      return false;
+    } else {
+      list = this.moderator.filter((data) => {
         return data.id == this.id;
       });
       return list.length ? true : false;
     }
-  
+  }
+
+  isforumPermission() {
+    if (
+      this.channelRelatedInfo.forumStatus === '' &&
+      (user.isAdminUser || user.isModerator) &&
+      user.channelRelatedInfo.topicType !== 'ANNOUNCEMENT' &&
+      user.channelRelatedInfo.topicType !== 'DISCUSSION'
+    ) {
+      return false;
+    }
+    return true;
+  }
 }
