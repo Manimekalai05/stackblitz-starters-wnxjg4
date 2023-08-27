@@ -4,4 +4,5 @@ export interface DraftRepository {
   saveDraft(replyModel: Reply): Promise<Ticket>;
   updateDraft(replyModel: Reply): Promise<Ticket>;
   sendDraft(replyModel: Reply): Promise<Ticket>;
+  sendReply(replyModel: Reply): Promise<Ticket>;
 }

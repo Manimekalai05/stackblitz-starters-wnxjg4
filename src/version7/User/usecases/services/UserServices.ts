@@ -3,6 +3,7 @@ import NotificationBoundary from '../repository/NotificationBoundary';
 import { UserRepository } from '../repository/UserRepository';
 import { UserServiceBoundary } from '../repository/UserServiceBoundary';
 import { IsModeratorUsecase } from './permission/IsModeratorUsecase';
+import { PermissionUsecase } from './permission/PermissionUsecase';
 
 export default class ReplyServices implements UserServiceBoundary {
   constructor(
@@ -12,5 +13,9 @@ export default class ReplyServices implements UserServiceBoundary {
 
   public async isModerator(replyInput: Reply): Promise<boolean> {
     return new IsModeratorUsecase(this.userRepo).execute(replyInput);
+  }
+
+  public async isHaveMailSendPermission(replyInput: Reply): Promise<boolean> {
+    return new PermissionUsecase(this.userRepo).execute(replyInput);
   }
 }
